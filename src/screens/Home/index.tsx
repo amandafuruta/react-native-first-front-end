@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Container, Scroller, TopDiv, DivMiddle, DivBottom, DivMovimentacao } from './style';
 import { Text, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
-import ListaPlana from '../../components/listaPlana'
+import ListaPlana from '../../components/HistoricoVendas'
 import {useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'react-native'
 
@@ -9,12 +9,6 @@ import { StatusBar } from 'react-native'
 
 export default ({navigation}) => { 
     
-    // const navigation = useNavigation();
-
-    // const handleClick = () => {
-        
-    // }
-
     const [visible, setVisible] = useState(true)
  
     return(

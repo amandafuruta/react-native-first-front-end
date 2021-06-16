@@ -40,7 +40,7 @@ export default function () {
         keyExtractor={item => item.id}
         renderItem={({item}) => (
 
-          <View style={item.id % 2 == 0? {backgroundColor:'#fff'} : {backgroundColor:'#F1F1F1', borderColor:'#707070', borderWidth:0.5}}>
+          <View style={parseInt(item.id) % 2 == 0? {backgroundColor:'#fff'} : {backgroundColor:'#F1F1F1', borderColor:'#707070', borderWidth:0.5}}>
             <View  style={estilo.divView}>
               <View style={{flexDirection:'row', width: 230}}>
                 <Text style={estilo.text}>

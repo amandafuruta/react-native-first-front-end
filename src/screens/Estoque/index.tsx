@@ -1,11 +1,69 @@
-import React from 'react';
-import { Container } from './style';
-import { Text } from 'react-native';
+import React, {useState} from 'react'
+import { Container , Header, TopButtons } from './style'
+import { View, ScrollView, StyleSheet } from 'react-native'
+import ListaProdutos from '../../components/ListaProdutos'
+import FabButton from '../../components/FabButton'
+
 
 export default () => {
+
+    const [btn1ligado, setBtn1Ligado] = useState(true)
+    const [btn2ligado, setBtn2Ligado] = useState(false)
+    const [btn3ligado, setBtn3Ligado] = useState(false)
+
+    function clicked(props) {
+        if(props == 'btn1'){
+            setBtn2Ligado(false)
+            setBtn3Ligado(false)
+        }
+
+        if (props == 'btn2'){
+            setBtn1Ligado(false)
+            setBtn3Ligado(false)
+        } 
+
+        if (props == 'btn3'){
+            setBtn1Ligado(false)
+            setBtn2Ligado(false)
+        }
+
+    }
+
     return(
         <Container>
-            <Text>Estoque</Text>
+            <ScrollView>
+
+                <Header>  
+                    <Header.Text>Produtos</Header.Text>
+                </Header>
+
+                <View style={{flexDirection:'row', paddingTop:37, paddingBottom:37, alignItems: 'center', justifyContent: 'center'}}>
+
+                    <TopButtons onPress={()=> {setBtn1Ligado(true) ; clicked('btn1' )}} style={{backgroundColor: btn1ligado ? '#075598' : '#F2f3fA',paddingLeft:19, paddingRight:19, borderTopLeftRadius: 5, borderBottomLeftRadius:5}} >
+                        <TopButtons.Text style={{color: btn1ligado ? '#fff' : '#075598'}}>Categorias</TopButtons.Text>
+                    </TopButtons>
+
+                    <TopButtons onPress={()=> {setBtn2Ligado(true) ; clicked('btn2' )}} style={{backgroundColor: btn2ligado ? '#075598' : '#F2f3fA', paddingLeft:20, paddingRight:20 }}>
+                        <TopButtons.Text style={{color: btn2ligado ? '#fff' : '#075598'}}>Preço</TopButtons.Text>
+                    </TopButtons>
+
+                    <TopButtons onPress={()=> {setBtn3Ligado(true) ; clicked('btn3' )}} style={{backgroundColor: btn3ligado ? '#075598' : '#F2f3fA',paddingLeft:35, paddingRight:35, borderTopRightRadius: 5, borderBottomRightRadius: 5}}>
+                        <TopButtons.Text style={{color: btn3ligado ? '#fff' : '#075598'}}>Nome</TopButtons.Text>
+                    </TopButtons> 
+
+                </View> 
+
+                <View>
+
+                    <ListaProdutos/>
+
+                </View>
+
+            </ScrollView>
+
+            <FabButton nome='+ Adicionar Produtos'/> 
+            
         </Container>
     )
 }
+
