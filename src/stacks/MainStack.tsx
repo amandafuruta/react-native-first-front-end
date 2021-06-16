@@ -5,9 +5,12 @@ import Home from '../screens/Home'
 import Metas from '../screens/Metas'
 
 import NovaVenda from '../screens/NovaVenda'
-import MinhaConta from '../screens/MinhaConta'
-import Suporte from '../screens/Suporte'
 import NovosClientes from '../screens/NovosClientes';
+
+import Desempenho from '../screens/Desempenho'
+
+import Estoque from '../screens/Estoque'
+import NovoProduto from '../screens/NovoProduto'
 
 const Stack = createStackNavigator()
 
@@ -30,20 +33,21 @@ const NewSaleStackNavigator = () => {
     )
 }
 
-const MyAccountNavigator = () => {
+const PerformanceNavigator = () => {
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Minha Conta" component={MinhaConta}/>
+            <Stack.Screen name="Desempenho" component={Desempenho}/>
         </Stack.Navigator>
     )
 }
 
-const SupportNavigator = () => {
+const StockNavigator = () => {
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Suporte" component={Suporte}/>
+            <Stack.Screen name="Estoque" component={Estoque} options={{headerShown:false}}/>
+            <Stack.Screen name="Novo Produto" component={NovoProduto}/>
         </Stack.Navigator>
     )
 }
 
-export {MainStackNavigator, NewSaleStackNavigator, MyAccountNavigator, SupportNavigator}
+export {MainStackNavigator, NewSaleStackNavigator, PerformanceNavigator, StockNavigator}

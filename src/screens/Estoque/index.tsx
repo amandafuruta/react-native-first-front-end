@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
 import { Container , Header, TopButtons } from './style'
-import { View, ScrollView, StyleSheet } from 'react-native'
+import { View, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native'
 import ListaProdutos from '../../components/ListaProdutos'
 import FabButton from '../../components/FabButton'
 
-
-export default () => {
+export default ({navigation}) => {
 
     const [btn1ligado, setBtn1Ligado] = useState(true)
     const [btn2ligado, setBtn2Ligado] = useState(false)
@@ -61,9 +60,35 @@ export default () => {
 
             </ScrollView>
 
-            <FabButton nome='+ Adicionar Produtos'/> 
+
+            <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Novo Produto')}>
+                <Text style={styles.txt}>+ Adicionar Produtos</Text>
+            </TouchableOpacity>
             
+                {/* <FabButton nome='+ Adicionar Produtos'  />  */}
+                       
         </Container>
     )
 }
 
+const styles = StyleSheet.create({
+
+    btn:{
+        backgroundColor: '#075598', 
+        height: 50, 
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingLeft: 90,
+        paddingRight:90,
+        position: 'absolute',
+        bottom: 20,
+        right: 30,
+    },
+    
+    txt:{
+        fontSize: 12,
+        fontWeight: '700',
+        color: '#fff',
+    }
+})

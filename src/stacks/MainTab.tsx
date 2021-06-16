@@ -2,7 +2,7 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import {View, Image, Text, TouchableOpacity, StyleSheet} from 'react-native'
 
-import {MainStackNavigator, NewSaleStackNavigator} from './MainStack'
+import {MainStackNavigator, NewSaleStackNavigator, PerformanceNavigator, StockNavigator} from './MainStack'
 import NovaVenda from '../screens/NovaVenda'
 import Desempenho from '../screens/Desempenho'
 import Estoque from '../screens/Estoque'
@@ -48,7 +48,7 @@ export default () => (
             }}/>
 
 
-            <Tab.Screen name="Desempenho" component={Desempenho} options={{
+            <Tab.Screen name="Desempenho" component={PerformanceNavigator} options={{
                    tabBarIcon: ({focused}) => {
                     return <View style={{alignItems:'center', justifyContent: 'center', height:'90%', width: '90%', borderRadius:10}}>
                         <Text style={estilo.img}>
@@ -59,7 +59,7 @@ export default () => (
                 },
             }}/>
 
-            <Tab.Screen name="Estoque" component={Estoque} options={{
+            <Tab.Screen name="Estoque" component={StockNavigator} options={{
                 tabBarIcon: ({focused}) => {
                     return <View style={{alignItems:'center', justifyContent: 'center', height:'90%', width: '90%', borderRadius:10}}>
                         <Text style={estilo.img}>
