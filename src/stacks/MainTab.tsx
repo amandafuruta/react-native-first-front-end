@@ -28,9 +28,9 @@ export default () => (
                             source={require('../../assets/home.jpg')}
                             style={estilo.img}
                         /> */}
-                        <Text style={estilo.img}>
+                        <View style={estilo.img}>
                             <AntDesign  name="home"  style={{color: focused? '#075598' : '#8dbfe8', fontSize: focused? 26 : 24}}/>
-                        </Text>
+                        </View>
                         <Text style={{color: focused? '#075598' : '#8dbfe8', fontSize: focused? 14:12}}>Home</Text>
                     </View>;
                 }
@@ -39,9 +39,9 @@ export default () => (
             <Tab.Screen name="Nova venda" component={NewSaleStackNavigator} options={{
                 tabBarIcon: ({focused}) => {
                     return <View style={{alignItems:'center', justifyContent: 'center', height:'90%', width: '90%', borderRadius:10}}>
-                        <Text style={estilo.img}>
+                        <View style={estilo.img}>
                             <MaterialIcons  name="attach-money" style={{color: focused? '#075598' : '#8dbfe8', fontSize: focused? 26 : 24}}/>
-                        </Text>
+                        </View>
                         <Text style={{color: focused? '#075598' : '#8dbfe8', fontSize: focused? 14:12}}>Nova Venda</Text>
                     </View>;
                 },
@@ -51,9 +51,9 @@ export default () => (
             <Tab.Screen name="Desempenho" component={PerformanceNavigator} options={{
                    tabBarIcon: ({focused}) => {
                     return <View style={{alignItems:'center', justifyContent: 'center', height:'90%', width: '90%', borderRadius:10}}>
-                        <Text style={estilo.img}>
+                        <View style={estilo.img}>
                             <AntDesign  name="linechart"style={{color: focused? '#075598' : '#8dbfe8', fontSize: focused? 26 : 24}}/>
-                        </Text>
+                        </View>
                         <Text style={{color: focused? '#075598' : '#8dbfe8', fontSize: focused? 13:12}}>Desempenho</Text>
                     </View>;
                 },
@@ -62,9 +62,9 @@ export default () => (
             <Tab.Screen name="Estoque" component={StockNavigator} options={{
                 tabBarIcon: ({focused}) => {
                     return <View style={{alignItems:'center', justifyContent: 'center', height:'90%', width: '90%', borderRadius:10}}>
-                        <Text style={estilo.img}>
+                        <View style={estilo.img}>
                             <AntDesign  name="barcode"  style={{color: focused? '#075598' : '#8dbfe8',  fontSize: focused? 26 : 24}}/>
-                        </Text>
+                        </View>
                         <Text style={{color: focused? '#075598' : '#8dbfe8', fontSize: focused? 14:12}}>Estoque</Text>
                     </View>;
                 },

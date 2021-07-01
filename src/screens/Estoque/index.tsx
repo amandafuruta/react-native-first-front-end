@@ -30,7 +30,7 @@ export default ({navigation}) => {
 
     return(
         <Container>
-            <ScrollView>
+            {/* <ScrollView> */}
 
                 <Header>  
                     <Header.Text>Produtos</Header.Text>
@@ -52,13 +52,15 @@ export default ({navigation}) => {
 
                 </View> 
 
-                <View>
+                <View style={styles.lista}>
 
                     <ListaProdutos/>
 
                 </View>
 
-            </ScrollView>
+
+
+            {/* </ScrollView> */}
 
 
             <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('Novo Produto')}>
@@ -90,5 +92,9 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: '700',
         color: '#fff',
+    },
+
+    lista:{
+        marginBottom: 280,
     }
 })

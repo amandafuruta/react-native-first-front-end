@@ -3,56 +3,56 @@ import {Text, View, FlatList, StyleSheet, Image} from 'react-native';
 
 const produtos = [
   {
-    id: '001',
+    
     foto: require('../../assets/produto1.jpg'),
     descricao: 'Apresuntado Sadia',
     preco: '23,90',
     unidade: '10'
   },
   {
-    id: '002',
+   
     foto: require('../../assets/produto2.jpg'),
     descricao: 'Queijo Mussarela',
     preco: '23,90',
     unidade: '3'
   },
   {
-    id: '003',
+    
     foto: require('../../assets/produto3.jpg'),
     descricao: 'Mortadela Seara',
     preco: '23,90',
     unidade: '5'
   },
   {
-    id: '004',
+    
     foto: require('../../assets/produto1.jpg'),
     descricao: 'Apresuntado Sadia',
     preco: '23,90',
     unidade: '0'
   },
   {
-    id: '005',
+    
     foto: require('../../assets/produto1.jpg'),
     descricao: 'Apresuntado Sadia',
     preco: '23,90',
     unidade: '10'
   },
   {
-    id: '006',
+    
     foto: require('../../assets/produto2.jpg'),
     descricao: 'Queijo Mussarela',
     preco: '23,90',
     unidade: '3'
   },
   {
-    id: '007',
+    
     foto: require('../../assets/produto3.jpg'),
     descricao: 'Mortadela Seara',
     preco: '23,90',
     unidade: '5'
   },
   {
-    id: '008',
+    
     foto: require('../../assets/produto1.jpg'),
     descricao: 'Apresuntado Sadia',
     preco: '23,90',
@@ -64,8 +64,9 @@ export default function () {
   return (
     <View>
       <FlatList
+        
         data={produtos}
-        keyExtractor={item => item.id}
+        keyExtractor={(item, index) => index.toString()}
         renderItem={({item}) => (
 
           <View style={{borderBottomColor:'#707070', borderBottomWidth:0.5}}>

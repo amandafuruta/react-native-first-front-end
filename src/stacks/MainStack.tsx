@@ -3,6 +3,8 @@ import {createStackNavigator} from '@react-navigation/stack'
 import Preload from '../screens/Preload'
 import Home from '../screens/Home' 
 import Metas from '../screens/Metas'
+import Clientes from '../screens/Clientes'
+import DetalhesClientes from '../screens/DetalhesClientes'
 
 import NovaVenda from '../screens/NovaVenda'
 import NovosClientes from '../screens/NovosClientes';
@@ -20,6 +22,8 @@ const MainStackNavigator = () => {
         <Stack.Navigator>
             <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
             <Stack.Screen name="Metas" component={Metas} />
+            <Stack.Screen name="Clientes" component={Clientes} />
+            <Stack.Screen name="Detalhes" component={DetalhesClientes} />
         </Stack.Navigator>
     )
 }
@@ -29,6 +33,7 @@ const NewSaleStackNavigator = () => {
         <Stack.Navigator>
             <Stack.Screen name="Nova Venda" component={NovaVenda} options={{headerShown:false}}/>
             <Stack.Screen name="Novos Clientes" component={NovosClientes} />
+            
         </Stack.Navigator>
     )
 }

@@ -36,6 +36,7 @@ export default function () {
   return (
     <View>
       <FlatList
+      // scrollEnabled={false}
         data={movimentacoes}
         keyExtractor={item => item.id}
         renderItem={({item}) => (

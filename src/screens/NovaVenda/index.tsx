@@ -21,7 +21,9 @@ export default ({navigation}) => {
                         style={{backgroundColor:'#f1f1f1', height:50, width:255, borderRadius:3, marginBottom:25, paddingLeft:10}}
                     />
 
-                    <TouchableOpacity style={{backgroundColor: '#f1f1f1', justifyContent: 'center', paddingRight:17,  marginBottom:25, height:50}}>
+                    <TouchableOpacity 
+                        onPress={()=>navigation.navigate('Clientes', false)}
+                        style={{backgroundColor: '#f1f1f1', justifyContent: 'center', paddingRight:17,  marginBottom:25, height:50}}>
                         <Octicons name="search" size={24} color="#353F92" /> 
                     </TouchableOpacity>
                 </View>

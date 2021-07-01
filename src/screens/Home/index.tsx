@@ -13,7 +13,7 @@ export default ({navigation}) => {
  
     return(
         <Container>
-            <Scroller>
+            <Scroller >
                 <StatusBar hidden={true}/>
                 
                 <TopDiv>
@@ -64,8 +64,8 @@ export default ({navigation}) => {
                             <Image source={require("../../../assets/metas.jpg")} style={{width:30, height:30, marginBottom:8}}/>
                             <DivBottom.Buttons.Touch.Text>Metas</DivBottom.Buttons.Touch.Text>
                         </DivBottom.Buttons.Touch> 
-
-                        <DivBottom.Buttons.Touch /*onPress={()=>}*/>
+ 
+                        <DivBottom.Buttons.Touch onPress={() => navigation.navigate('Clientes', true)}>
                             <Image source={require("../../../assets/clientes.jpg")} style={{width:30, height:30, marginBottom:8}}/>
                             <DivBottom.Buttons.Touch.Text>Clientes</DivBottom.Buttons.Touch.Text>
                         </DivBottom.Buttons.Touch>   
@@ -89,7 +89,7 @@ export default ({navigation}) => {
                     <DivMovimentacao.Title>Últimas movimentações</DivMovimentacao.Title>
                     <ListaPlana/>    
                 </DivMovimentacao>
-            </Scroller>
+            </Scroller> 
         </Container>
     )
 }  
