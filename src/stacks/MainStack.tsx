@@ -8,6 +8,8 @@ import DetalhesClientes from '../screens/DetalhesClientes'
 
 import NovaVenda from '../screens/NovaVenda'
 import NovosClientes from '../screens/NovosClientes';
+import NovaVendaProdutos from '../screens/NovaVendaProdutos'
+import NovaVendaRevisao from '../screens/NovaVendaRevisao';
 
 import Desempenho from '../screens/Desempenho'
 
@@ -24,6 +26,7 @@ const MainStackNavigator = () => {
             <Stack.Screen name="Metas" component={Metas} />
             <Stack.Screen name="Clientes" component={Clientes} />
             <Stack.Screen name="Detalhes" component={DetalhesClientes} />
+            
         </Stack.Navigator>
     )
 }
@@ -33,7 +36,8 @@ const NewSaleStackNavigator = () => {
         <Stack.Navigator>
             <Stack.Screen name="Nova Venda" component={NovaVenda} options={{headerShown:false}}/>
             <Stack.Screen name="Novos Clientes" component={NovosClientes} />
-            
+            <Stack.Screen name="Nova Venda Produtos" component={NovaVendaProdutos} />
+            <Stack.Screen name="Revisão" component={NovaVendaRevisao} />
         </Stack.Navigator>
     )
 }
@@ -49,7 +53,7 @@ const PerformanceNavigator = () => {
 const StockNavigator = () => {
     return(
         <Stack.Navigator>
-            <Stack.Screen name="Estoque" component={Estoque} options={{headerShown:false}}/>
+            <Stack.Screen name="Estoque" component={Estoque}  options={{headerShown:false}}/>
             <Stack.Screen name="Novo Produto" component={NovoProduto}/>
         </Stack.Navigator>
     )

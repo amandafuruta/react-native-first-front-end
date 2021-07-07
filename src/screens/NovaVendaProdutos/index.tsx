@@ -4,7 +4,7 @@ import { View, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-nati
 import ListaProdutos from '../../components/ListaProdutos'
 import FabButton from '../../components/FabButton'
 
-export default ({navigation}) => {
+export default ({navigation}, props) => {
     
     
 
@@ -32,11 +32,6 @@ export default ({navigation}) => {
 
     return(
         <Container>
-        
-
-                <Header>  
-                    <Header.Text>Produtos</Header.Text>
-                </Header>
 
                 <View style={{flexDirection:'row', paddingTop:37, paddingBottom:37, alignItems: 'center', justifyContent: 'center'}}>
                     <TopButtons onPress={()=> {setBtn1Ligado(true) ; clicked('btn1' )}} style={{backgroundColor: btn1ligado ? '#075598' : '#F2f3fA',paddingLeft:19, paddingRight:19, borderTopLeftRadius: 5, borderBottomLeftRadius:5}} >
@@ -55,24 +50,14 @@ export default ({navigation}) => {
 
                 <View style={styles.lista}>
 
-                    <ListaProdutos/>
+                    <ListaProdutos identificador='nova-venda'/>
 
                 </View>
-
-
-
-        
-               
-                <TouchableOpacity style={styles.btn}  onPress={() => navigation.navigate('Novo Produto')}>
-                    <Text style={styles.txt}>+adicionar produtos</Text>
+             
+                <TouchableOpacity style={styles.btn}  onPress={() => navigation.navigate('Revisão')}>
+                    <Text style={styles.txt}>Avançar</Text>
                 </TouchableOpacity>
-          
-               
-                
-         
-            
-                
-                       
+                           
         </Container>
     )
 }
@@ -99,6 +84,6 @@ const styles = StyleSheet.create({
     },
 
     lista:{
-        marginBottom: 280,
+        marginBottom: 180,
     }
 })

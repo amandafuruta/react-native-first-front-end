@@ -208,7 +208,7 @@ export default ({ navigation , route}) => {
           <TouchableOpacity
             style={{ paddingLeft: 50}}
             // disabled={valor==true? false: true }
-            onPress={valor==true?() => navigation.navigate("Detalhes", { item }) : ()=>{}} 
+            onPress={valor==true?() => navigation.navigate("Detalhes", { item }) : ()=>navigation.navigate("Nova Venda", {nome:item.nome})} 
             
           >
             <Text style={{ paddingVertical: 10 }}>{item.nome}</Text>

@@ -13,7 +13,7 @@ export default ({navigation}) => {
  
     return(
         <Container>
-            <Scroller >
+            <Scroller  >
                 <StatusBar hidden={true}/>
                 
                 <TopDiv>

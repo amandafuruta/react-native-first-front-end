@@ -5,11 +5,14 @@ import { Octicons } from '@expo/vector-icons';
 
 
 
-export default ({navigation}) => {
+export default ({navigation, route}) => {
 
-    const handleClick = () =>{
-
-    }
+    React.useEffect(() => {
+        if (route.params?.nome) {
+          // Post updated, do something with `route.params.post`
+          // For example, send the post to the server
+        }
+      }, [route.params?.nome]);
 
     return(
         <Container>
@@ -18,6 +21,7 @@ export default ({navigation}) => {
                 
                 <View style={{flexDirection:'row'}}>
                     <TextInput
+                        value={route.params?.nome}
                         style={{backgroundColor:'#f1f1f1', height:50, width:255, borderRadius:3, marginBottom:25, paddingLeft:10}}
                     />
 
@@ -30,7 +34,8 @@ export default ({navigation}) => {
             
                 <View >
                     <Pressable
-                        onPress={handleClick}
+                        onPress={()=>route.params?.nome == null? '': navigation.navigate('Nova Venda Produtos')}
+
                        style={{backgroundColor:'#075598', width:'100%', height:50, borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}
                     >
                         <Text style={{color:'#fff', fontSize:17, textTransform:'capitalize', }}>Avançar</Text>
