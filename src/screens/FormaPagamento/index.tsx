@@ -6,7 +6,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
 import CheckBox from '@react-native-community/checkbox';
-
+import {GlobalStyles} from '../../../style/globalStyle'
 
 export default ({navigation}) => {
     const [valor, setValor] = useState(null)
@@ -105,9 +105,9 @@ export default ({navigation}) => {
 
 
     return(
-        <Container>
+        <Container style={GlobalStyles.backgroundWhite} >
          
-            <Text style={{color: '#075598', fontSize:20, textAlign:'center', marginBottom:30}}>Escolha a forma de pagamento</Text>
+            <Text style={[GlobalStyles.primaryColor,{fontSize:20, textAlign:'center', marginBottom:30}]}>Escolha a forma de pagamento</Text>
 
             <TouchableHighlight    
                 activeOpacity={0.6}
@@ -150,11 +150,11 @@ export default ({navigation}) => {
 
             <View style={{flexDirection:'row', marginTop:10, marginBottom:20}}>
                 <Text style={{fontSize:16, marginRight: 10}}>Total:</Text>
-                <Text style={{fontSize:16, fontWeight:'700' ,color:'#075598'}}>R$ {valor}</Text>
+                <Text style={[GlobalStyles.primaryColor,{fontSize:16, fontWeight:'700' }]}>R$ {valor}</Text>
             </View>
 
-            <TouchableOpacity style={[estilo.btnAvancar, estilo.btnFinalizar]} onPress={()=>{navigation.navigate('Pagamento Finalizado'), armazenarTotal(valor) } }>
-                <Text style={estilo.txtAvancar}>Finalizar</Text> 
+            <TouchableOpacity style={[estilo.btnFinalizar, GlobalStyles.button]} onPress={()=>{navigation.navigate('Pagamento Finalizado'), armazenarTotal(valor) } }>
+                <Text style={[estilo.txtAvancar, GlobalStyles.whiteColor]}>Finalizar</Text> 
             </TouchableOpacity>
 
             <View>
@@ -165,8 +165,8 @@ export default ({navigation}) => {
                 >   
                 
                     <View style={{alignItems: 'center', justifyContent: 'center', flex:1, backgroundColor:'rgba(0,0,0,0.5)'}}>
-                        <View style={{backgroundColor: '#fff', height:400, width:250, borderRadius:5, alignItems: 'center', padding:25}}>
-                            <Text style={{color: '#075598', fontSize:20, marginBottom:20, textAlign: 'center'}}>Parcelamento cartão de crédito</Text>
+                        <View style={[GlobalStyles.backgroundWhite, {height:400, width:250, borderRadius:5, alignItems: 'center', padding:25}]}>
+                            <Text style={[GlobalStyles.primaryColor,{fontSize:20, marginBottom:20, textAlign: 'center'}]}>Parcelamento cartão de crédito</Text>
                             
                             <View style={{height:180}}>
                                 <View style={estilo.parcelamento}>
@@ -221,8 +221,8 @@ export default ({navigation}) => {
                             </View>
 
                             {/* armazenar(), */}
-                            <TouchableOpacity style={[estilo.btnAvancar, estilo.btnAvancarModal]} onPress={() =>{setModalVisivel(false),setTexto(parcela + ' x R$ ' + valorParcela + ' sem juros'),  OP('Cartao',parcela)}} > 
-                                <Text style={estilo.txtAvancar}>ok</Text> 
+                            <TouchableOpacity style={[GlobalStyles.backgroundPrimary, GlobalStyles.button, estilo.btnAvancarModal]} onPress={() =>{setModalVisivel(false),setTexto(parcela + ' x R$ ' + valorParcela + ' sem juros'),  OP('Cartao',parcela)}} > 
+                                <Text style={[estilo.txtAvancar, GlobalStyles.whiteColor]}>ok</Text> 
                             </TouchableOpacity>
 
                         </View>         
@@ -241,7 +241,6 @@ const estilo = StyleSheet.create({
         width: 270,
         borderRadius:5,
         marginBottom: 10,
-        
     },
 
     div:{
@@ -261,15 +260,6 @@ const estilo = StyleSheet.create({
         fontWeight: '700',    
     },
 
-    btnAvancar:{
-        backgroundColor: '#075598', 
-        height: 50, 
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',  
-        
-    },
-
     btnFinalizar:{
         width: 300,
     },
@@ -282,7 +272,6 @@ const estilo = StyleSheet.create({
     txtAvancar:{
         fontSize: 12,
         fontWeight: '700',
-        color: '#fff',
         textTransform:'uppercase'
     },
 

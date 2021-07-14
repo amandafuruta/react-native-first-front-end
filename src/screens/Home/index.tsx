@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { Container, Scroller, TopDiv, DivMiddle, DivBottom, DivMovimentacao } from './style';
-import { Text, Image, StyleSheet, TouchableOpacity, TextInput, Pressable, View } from 'react-native';
+import { Text, Image, StyleSheet, TextInput, Pressable, View } from 'react-native';
+import {TouchableOpacity} from 'react-native-gesture-handler'
 import ListaPlana from '../../components/HistoricoVendas'
-import {useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'react-native'
 import { Feather } from '@expo/vector-icons'; 
-
+import {GlobalStyles} from '../../../style/globalStyle'
 
 export default ({navigation}) => { 
     
@@ -13,22 +13,25 @@ export default ({navigation}) => {
  
     return(
         <Container>
-            <Scroller  >
-                <StatusBar hidden={true}/>
-                
-                <TopDiv >
+            
+            <StatusBar hidden={true}/>
+
+            <View style={{ position:'absolute', alignSelf:'stretch', right:0, left:0}}>
+                <TopDiv style={GlobalStyles.backgroundPrimary} >
                     <View style={{alignSelf: "stretch", alignItems:'flex-end', paddingRight:20}}>
-                        <Pressable onPress={()=>{navigation.openDrawer()}}>
+                        <TouchableOpacity onPress={()=>{navigation.openDrawer()}}>
                             <Feather name="menu" size={24} color="white" style={{marginLeft:50}}/>
-                        </Pressable>
+                        </TouchableOpacity>
                     </View>
 
                     <View>
-                        <TopDiv.Txt>App Lets</TopDiv.Txt>
+                        <TopDiv.Txt style={GlobalStyles.whiteColor}>App Lets</TopDiv.Txt>
                     </View>
                 </TopDiv>
 
-                <DivMiddle>
+                
+
+                <DivMiddle style={GlobalStyles.backgroundGrey}>
                     <DivMiddle.Box>    
                         <Image
                             source={require('../../../assets/profile.jpg')}
@@ -41,7 +44,7 @@ export default ({navigation}) => {
                                 <TextInput
                                     value='3.201,29'
                                     secureTextEntry={visible? true : false}
-                                    style={{color:"#075598", fontSize:20, fontWeight:'bold', width:100}}
+                                    style={[GlobalStyles.primaryColor,{fontSize:20, fontWeight:'bold', width:100}]}
                                 />
                                 <TouchableOpacity onPress={()=>setVisible(!visible)} >
                                         <Image 
@@ -53,8 +56,10 @@ export default ({navigation}) => {
                         </DivMiddle.Text>
                     </DivMiddle.Box>
                 </DivMiddle> 
+            </View>
 
-                <DivBottom>     
+             <Scroller  >
+                <DivBottom style={[GlobalStyles.backgroundWhite, {elevation:1, marginTop:230}]}>     
 
                     <DivBottom.Top>    
                         <Image
@@ -62,39 +67,39 @@ export default ({navigation}) => {
                             style={estilo.imgDivBottom}
                         />
                         <DivBottom.Top.Div>
-                            <DivBottom.Top.Div.Title>Boas Vendas!</DivBottom.Top.Div.Title>
+                            <DivBottom.Top.Div.Title style={GlobalStyles.primaryColor}>Boas Vendas!</DivBottom.Top.Div.Title>
                             <DivBottom.Top.Div.Subtitle>Você teve um rendimento <Text style={{color:'#3FBF7A', fontWeight:'600'}}>24% melhor</Text> que a última semana! Continue assim!</DivBottom.Top.Div.Subtitle>
                         </DivBottom.Top.Div>
                     </DivBottom.Top> 
 
                     <DivBottom.Buttons style={{marginBottom:15}}>
-                        <DivBottom.Buttons.Touch onPress={() => navigation.navigate('Metas')} style={{marginRight:15}}>
+                        <DivBottom.Buttons.Touch onPress={() => navigation.navigate('Metas')} style={[GlobalStyles.backgroundGrey, {marginRight:15}]}>
                             <Image source={require("../../../assets/metas.jpg")} style={{width:30, height:30, marginBottom:8}}/>
-                            <DivBottom.Buttons.Touch.Text>Metas</DivBottom.Buttons.Touch.Text>
+                            <DivBottom.Buttons.Touch.Text style={GlobalStyles.primaryColor}>Metas</DivBottom.Buttons.Touch.Text>
                         </DivBottom.Buttons.Touch> 
  
-                        <DivBottom.Buttons.Touch onPress={() => navigation.navigate('Clientes', true)}>
+                        <DivBottom.Buttons.Touch onPress={() => navigation.navigate('Clientes', true)} style={GlobalStyles.backgroundGrey}>
                             <Image source={require("../../../assets/clientes.jpg")} style={{width:30, height:30, marginBottom:8}}/>
-                            <DivBottom.Buttons.Touch.Text>Clientes</DivBottom.Buttons.Touch.Text>
+                            <DivBottom.Buttons.Touch.Text style={GlobalStyles.primaryColor}>Clientes</DivBottom.Buttons.Touch.Text>
                         </DivBottom.Buttons.Touch>   
                     </DivBottom.Buttons>  
  
                     <DivBottom.Buttons style={{marginBottom:35}} >
-                        <DivBottom.Buttons.Touch /*onPress={()=>}*/ style={{marginRight:5}}>
+                        <DivBottom.Buttons.Touch  style={[GlobalStyles.backgroundGrey, {marginRight:5}]}>
                             <Image source={require("../../../assets/perform.jpg")} style={{width:30, height:30, marginBottom:8}}/>
-                            <DivBottom.Buttons.Touch.Text>Performance</DivBottom.Buttons.Touch.Text>
+                            <DivBottom.Buttons.Touch.Text style={GlobalStyles.primaryColor}>Performance</DivBottom.Buttons.Touch.Text>
                         </DivBottom.Buttons.Touch> 
 
-                        <DivBottom.Buttons.Touch onPress={()=>navigation.navigate('Minha Venda')} style={{marginLeft:10}}>
+                        <DivBottom.Buttons.Touch onPress={()=>navigation.navigate('Minha Venda')} style={[GlobalStyles.backgroundGrey, {marginLeft:10}]}>
                             <Image source={require("../../../assets/newsale.jpg")} style={{width:30, height:30, marginBottom:8}}/>
-                            <DivBottom.Buttons.Touch.Text>Minhas vendas</DivBottom.Buttons.Touch.Text>
+                            <DivBottom.Buttons.Touch.Text style={GlobalStyles.primaryColor}>Minhas vendas</DivBottom.Buttons.Touch.Text>
                         </DivBottom.Buttons.Touch>   
                     </DivBottom.Buttons>  
 
                 </DivBottom>
             
-                <DivMovimentacao>
-                    <DivMovimentacao.Title>Últimas movimentações</DivMovimentacao.Title>
+                <DivMovimentacao style={GlobalStyles.backgroundWhite}>
+                    <DivMovimentacao.Title style={GlobalStyles.primaryColor}>Últimas movimentações</DivMovimentacao.Title>
                     <ListaPlana />    
                 </DivMovimentacao>
             </Scroller> 

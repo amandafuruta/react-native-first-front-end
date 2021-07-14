@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Container, MainBox } from './style';
 import { FlatList, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {GlobalStyles} from '../../../style/globalStyle'
 
 const produtos = [
     {
@@ -125,9 +126,9 @@ export default ({navigation,route}) => {
     
     return(
         <Container>
-            <MainBox >    
-                <Text style={{fontSize:18, color:'#666666', marginBottom:5}}>{cliente}</Text>
-                <Text style={{fontSize:20, color:'#075598', marginBottom:30}}>Revisão de pedido</Text>
+            <MainBox style={GlobalStyles.backgroundWhite} >    
+                <Text style={[GlobalStyles.darkGreyColor,{fontSize:18, marginBottom:5}]}>{cliente}</Text>
+                <Text style={[GlobalStyles.primaryColor,{fontSize:20, marginBottom:30}]}>Revisão de pedido</Text>
                 <FlatList
             
                     data={productInCart}
@@ -136,13 +137,13 @@ export default ({navigation,route}) => {
 
                         <View style={{flexDirection:'row', paddingVertical:20, borderBottomColor:'#DADADA', borderBottomWidth:1}} >      
                             <View style={{width: 150}}>
-                                <Text style={{fontSize:15, color:'#707070'}}>
+                                <Text style={[GlobalStyles.mediumGreyColor, {fontSize:15}]}>
                                     {item.nomeProduto}
                                 </Text>
                             </View>
 
                             <View style={{width: 30, marginRight:10}}>
-                                <Text style={{fontSize:15, color:'#707070'}}>
+                                <Text style={[GlobalStyles.mediumGreyColor,{fontSize:15}]}>
                                     {item.quantidade}
                                 </Text>
                             </View>
@@ -158,11 +159,11 @@ export default ({navigation,route}) => {
 
                 <View style={{flexDirection: 'row', marginVertical: 25}}>
                     <Text style={{fontSize:15, color:'#2D2D2D', marginRight:12}}>Total:</Text>
-                    <Text style={{fontSize:15, color:'#075598'}}>R$ {somaTotal()} </Text>
+                    <Text style={[GlobalStyles.primaryColor,{fontSize:15}]}>R$ {somaTotal()} </Text>
                 </View>
 
-                <TouchableOpacity style={styles.btn} onPress={()=>{salvar(somaTotal()), navigation.navigate('Forma de Pagamento')}}>
-                    <Text style={styles.txt}>Avançar</Text>
+                <TouchableOpacity style={[styles.btn, GlobalStyles.backgroundPrimary, GlobalStyles.button]} onPress={()=>{salvar(somaTotal()), navigation.navigate('Forma de Pagamento')}}>
+                    <Text style={[styles.txt, GlobalStyles.whiteColor]}>Avançar</Text>
                 </TouchableOpacity>
             </MainBox>
         </Container>
@@ -172,18 +173,12 @@ export default ({navigation,route}) => {
 const styles = StyleSheet.create({
    
     btn:{
-        backgroundColor: '#075598', 
-        height: 50, 
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',  
         width: 250,
     },
 
     txt:{
         fontSize: 12,
         fontWeight: '700',
-        color: '#fff',
         textTransform:'uppercase'
     },
 })

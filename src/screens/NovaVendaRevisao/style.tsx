@@ -8,7 +8,6 @@ export const Container = styled.SafeAreaView`
     padding-bottom: 10px;
 ` 
 export const MainBox = styled.View`
-    background-color: #fff;
     padding: 20px ;
     border-radius: 10px;
     align-items: center;

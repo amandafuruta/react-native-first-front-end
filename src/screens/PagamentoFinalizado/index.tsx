@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container } from './style';
 import {Text, View, Image, StyleSheet, TouchableOpacity, ScrollView} from 'react-native'
-import { useNavigation } from '@react-navigation/native';
+import {GlobalStyles} from '../../../style/globalStyle'
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -32,14 +32,14 @@ export default ({navigation}) => {
        },[])
     
     return(
-        <Container>
+        <Container style={GlobalStyles.backgroundWhite}>
             
                 <Image
                     source={require('../../../assets/confete-top.jpg')}
                     style={estilo.imgTop}
                 />
 
-                <Text style={{fontSize: 20, color:'#075598', textAlign:'center', width:180, marginBottom:10}}>Registro realizado com sucesso !</Text>
+                <Text style={[GlobalStyles.primaryColor,{fontSize: 20, textAlign:'center', width:180, marginBottom:10}]}>Registro realizado com sucesso !</Text>
 
                 <Image
                     source={require('../../../assets/confetes-bottom.jpg')}
@@ -52,20 +52,20 @@ export default ({navigation}) => {
                 />
 
                 <View style={estilo.divTexto}>
-                    <Text style={estilo.texto}>Cliente: </Text>
-                    <Text style={[estilo.texto, {fontWeight: 'bold'}]}> {cliente}</Text>
+                    <Text style={[estilo.texto, GlobalStyles.darkGreyColor]}>Cliente: </Text>
+                    <Text style={[[estilo.texto, GlobalStyles.darkGreyColor], {fontWeight: 'bold'}]}> {cliente}</Text>
                 </View>
 
                 <View style={estilo.divTexto}>
-                    <Text style={estilo.texto}>Valor total: </Text>
-                    <Text style={[estilo.texto, {fontWeight: 'bold'}]}>R$ {total}</Text>
+                    <Text style={[estilo.texto, GlobalStyles.darkGreyColor]}>Valor total: </Text>
+                    <Text style={[estilo.texto, GlobalStyles.darkGreyColor, {fontWeight: 'bold'}]}>R$ {total}</Text>
                 </View>
 
                 <View style={estilo.divTexto}>
-                    <Text style={estilo.texto}>Forma de pagamento: </Text>
+                    <Text style={[estilo.texto, GlobalStyles.darkGreyColor]}>Forma de pagamento: </Text>
                     <View style={estilo.divTexto}>
-                        <Text style={[estilo.texto, {fontWeight: 'bold'}]}>{formaPagamento} </Text>
-                        <Text style={[estilo.texto ,{fontWeight:'bold' ,display: formaPagamento=='Cartão'? 'flex': 'none'}]}>{parcela}x</Text>
+                        <Text style={[estilo.texto, GlobalStyles.darkGreyColor, {fontWeight: 'bold'}]}>{formaPagamento} </Text>
+                        <Text style={[estilo.texto, GlobalStyles.darkGreyColor ,{fontWeight:'bold' ,display: formaPagamento=='Cartão'? 'flex': 'none'}]}>{parcela}x</Text>
                     </View>
 
                 </View>
@@ -74,7 +74,7 @@ export default ({navigation}) => {
                     style={estilo.btnNovaVenda}
                     onPress={()=>{navigation.navigate('Nova Venda')}}
                 >
-                    <Text style={estilo.btnNovaVendaTxt}>Nova Venda!</Text>
+                    <Text style={[estilo.btnNovaVendaTxt, GlobalStyles.primaryColor]}>Nova Venda!</Text>
                 </TouchableOpacity>            
             
         </Container>
@@ -106,7 +106,6 @@ const estilo = StyleSheet.create({
 
     texto:{
         fontSize: 15, 
-        color: '#666666',
     },
 
     btnNovaVenda:{
@@ -122,6 +121,5 @@ const estilo = StyleSheet.create({
     btnNovaVendaTxt:{
         fontSize:12,
         fontWeight:'700',
-        color: '#075598',
     }   
 })

@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
-import { Container , Header, TopButtons } from './style'
-import { View, ScrollView, StyleSheet, TouchableOpacity, Text, Pressable } from 'react-native'
+import { Container , TopButtons } from './style'
+import { View,  StyleSheet, TouchableOpacity, Text, Pressable } from 'react-native'
 import ListaProdutos from '../../components/ListaProdutos'
 import { Feather } from '@expo/vector-icons';
+import {GlobalStyles} from '../../../style/globalStyle'
 
 export default ({navigation}) => {
 
@@ -29,11 +30,11 @@ export default ({navigation}) => {
     }
 
     return(
-            <Container>
-                <View style={{alignSelf: "stretch", backgroundColor:'#F1F1F1', flexDirection:'row', height:80, alignItems: 'center', paddingRight:40, paddingLeft:140, justifyContent: 'space-between'}}>
-                    <Text style={{fontSize:18, fontWeight:'700' , color:'#075598'}}>Produtos</Text>
+            <Container style={GlobalStyles.backgroundWhite}>
+                <View style={[GlobalStyles.backgroundGrey, {alignSelf: "stretch",flexDirection:'row', height:80, alignItems: 'center', paddingRight:40, paddingLeft:140, justifyContent: 'space-between'}]}>
+                    <Text style={[GlobalStyles.primaryColor,{fontSize:18, fontWeight:'700'}]}>Produtos</Text>
                     <Pressable onPress={()=>{navigation.openDrawer()}}>
-                        <Feather name="menu" size={24} color="#075598" style={{marginLeft:50}}/>
+                        <Feather name="menu" size={24}style={[{marginLeft:50},GlobalStyles.primaryColor]}/>
                     </Pressable>
                 </View>
 
@@ -57,20 +58,10 @@ export default ({navigation}) => {
                     <ListaProdutos/>
 
                 </View>
-
-
-
-        
-               
-                <TouchableOpacity style={styles.btn}  onPress={() => navigation.navigate('Novo Produto')}>
-                    <Text style={styles.txt}>+adicionar produtos</Text>
-                </TouchableOpacity>
-          
-               
-                
-         
-            
-                
+             
+                <TouchableOpacity style={[styles.btn, GlobalStyles.backgroundPrimary, GlobalStyles.button]}  onPress={() => navigation.navigate('Novo Produto')}>
+                    <Text style={[styles.txt, GlobalStyles.whiteColor]}>+ adicionar produtos</Text>
+                </TouchableOpacity>      
                        
         </Container>
     )
@@ -79,11 +70,6 @@ export default ({navigation}) => {
 const styles = StyleSheet.create({
    
     btn:{
-        backgroundColor: '#075598', 
-        height: 50, 
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
         position: 'absolute',
         bottom: 20,
         width: 250,
@@ -93,7 +79,6 @@ const styles = StyleSheet.create({
     txt:{
         fontSize: 12,
         fontWeight: '700',
-        color: '#fff',
         textTransform:'uppercase'
     },
 

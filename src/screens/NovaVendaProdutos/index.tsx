@@ -3,6 +3,7 @@ import { Container, TopButtons } from './style'
 import { View,  StyleSheet, TouchableOpacity, Text } from 'react-native'
 import ListaProdutos from '../../components/ListaProdutos'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {GlobalStyles} from '../../../style/globalStyle'
 
 export default ({navigation, route} ) => {
     const nome = route.params
@@ -46,7 +47,7 @@ export default ({navigation, route} ) => {
 
 
     return(
-        <Container>
+        <Container style={GlobalStyles.backgroundWhite}>
 
                 <View style={{flexDirection:'row', paddingTop:37, paddingBottom:37, alignItems: 'center', justifyContent: 'center'}}>
                     <TopButtons onPress={()=> {setBtn1Ligado(true) ; clicked('btn1' )}} style={{backgroundColor: btn1ligado ? '#075598' : '#F2f3fA',paddingLeft:19, paddingRight:19, borderTopLeftRadius: 5, borderBottomLeftRadius:5}} >
@@ -70,8 +71,8 @@ export default ({navigation, route} ) => {
                 </View>
 
                 
-                <TouchableOpacity style={styles.btn} onPress={()=>{validar(), carrinho==true? navigation.navigate('Revisão', nome): console.log('carrinho vazio')}}>
-                    <Text style={styles.txt}>Avançar</Text>
+                <TouchableOpacity style={[styles.btn, GlobalStyles.backgroundPrimary, GlobalStyles.button]} onPress={()=>{validar(), carrinho==true? navigation.navigate('Revisão', nome): console.log('carrinho vazio')}}>
+                    <Text style={[styles.txt, GlobalStyles.whiteColor]}>Avançar</Text>
                 </TouchableOpacity>
                            
         </Container>
@@ -81,11 +82,6 @@ export default ({navigation, route} ) => {
 const styles = StyleSheet.create({
    
     btn:{
-        backgroundColor: '#075598', 
-        height: 50, 
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
         position: 'absolute',
         bottom: 20,
         width: 250,
@@ -95,7 +91,6 @@ const styles = StyleSheet.create({
     txt:{
         fontSize: 12,
         fontWeight: '700',
-        color: '#fff',
         textTransform:'uppercase'
     },
 

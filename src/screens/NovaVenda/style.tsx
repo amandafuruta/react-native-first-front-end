@@ -2,11 +2,9 @@ import React from 'react';
 import styled from 'styled-components/native'
 
 export const Container = styled.SafeAreaView`
-    background-color: #fff;
     align-items: center;
     justify-content: center;
     flex: 1;
-    
 ` 
 
 export const MainDiv = styled.View`
@@ -20,7 +18,6 @@ MainDiv.ViewText = styled.View`
 `
 
 MainDiv.Text = styled.Text`
-    color: #075598;
     font-size:12px;
 `
 MainDiv.ButtonView = styled.View`

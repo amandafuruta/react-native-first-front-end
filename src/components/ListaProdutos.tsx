@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {Text, View, FlatList, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {GlobalStyles} from '../../style/globalStyle'
 
 const produtos = [
   {
@@ -113,7 +114,7 @@ export default function (props:any) {
         console.log('não entrou')
         return true
       }
-      // return elemento.produtoID === id
+     
     })
 
     if (product && product.quantidade<qntdd ){
@@ -167,11 +168,11 @@ export default function (props:any) {
                 </View>
 
                 <View style={{flexDirection:'column', width: 210,  justifyContent: 'center', paddingLeft: 20}} >
-                    <Text style={estilo.textDescricao}>
+                    <Text style={[estilo.textDescricao, GlobalStyles.darkGreyColor]}>
                         {JSON.stringify(item.descricao)}
                     </Text>
 
-                    <Text style={estilo.text}>
+                    <Text style={[estilo.text, GlobalStyles.darkGreyColor]}>
                         R${item.preco}
                     </Text>
                 </View>
@@ -184,14 +185,14 @@ export default function (props:any) {
 
                 <View style={ {display: ID==null? 'none': 'flex', flexDirection:'row'}}>
 
-                  <TouchableOpacity style={[estilo.btnplus, {marginRight:10}]} onPress={()=> removerProdutosCarrinho(item.id) }>
-                    <Text style={estilo.txtplus}>-</Text>
+                  <TouchableOpacity style={[estilo.btnplus, GlobalStyles.backgroundPrimary, {marginRight:10}]} onPress={()=> removerProdutosCarrinho(item.id) }>
+                    <Text style={[estilo.txtplus, GlobalStyles.whiteColor]}>-</Text>
                   </TouchableOpacity> 
 
                   <Text style={estilo.textUnid}> {getProductQuantity(item.id)} </Text>
 
-                  <TouchableOpacity style={[estilo.btnplus, {marginLeft:10}]} onPress={()=> adicionarProdutosCarrinho(item.id, item.unidade)}>
-                    <Text style={estilo.txtplus}>+</Text>
+                  <TouchableOpacity style={[estilo.btnplus,  GlobalStyles.backgroundPrimary, {marginLeft:10}]} onPress={()=> adicionarProdutosCarrinho(item.id, item.unidade)}>
+                    <Text style={[estilo.txtplus, GlobalStyles.whiteColor]}>+</Text>
                   </TouchableOpacity>
 
                 </View>
@@ -217,14 +218,12 @@ const estilo = StyleSheet.create({
   },
 
   textDescricao: {
-    color:'#666666',
     fontSize: 12,
     fontWeight: '700',
     marginBottom: 5,
   },
 
   text: {
-    color:'#666666',
     fontSize: 12,
     marginRight: 20,
   },
@@ -240,7 +239,6 @@ const estilo = StyleSheet.create({
   },
 
   btnplus:{
-    backgroundColor: '#075598',
     borderRadius:5,
     width: 20,
     alignItems: 'center',
@@ -248,7 +246,6 @@ const estilo = StyleSheet.create({
 
   txtplus:{
     fontSize: 15,
-    color: '#fff',
   }
 
 });

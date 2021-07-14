@@ -1,18 +1,9 @@
 import React, { useRef } from 'react';
 import { Form } from '@unform/mobile';
-import { 
-  StyleSheet, 
-  Text, 
-  KeyboardAvoidingView, 
-  Platform, 
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from 'react-native';
+import { StyleSheet, Text, KeyboardAvoidingView, Platform, View,TouchableOpacity,ScrollView } from 'react-native';
 import Input from '../../components/Input';
-
+import {GlobalStyles} from '../../../style/globalStyle'
 import InputMask from '../../components/InputMask'
-
 
 export default function App() {
   const formRef = useRef(null);
@@ -24,7 +15,7 @@ export default function App() {
   }
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null} style={styles.container}>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null} style={[styles.container, GlobalStyles.backgroundWhite]}>
         <ScrollView>
             <View>
                 <Form ref={formRef} onSubmit={handleSubmit}>
@@ -40,16 +31,15 @@ export default function App() {
                     <Input name="cidade" label="Cidade" require />
 
                     <View style={{paddingTop: 23, paddingBottom:28, alignItems: 'center', justifyContent: 'center'}}>
-                        <Text style={{fontSize:12, color:"#075598"}}>Inserir dados completo</Text>
+                        <Text style={[GlobalStyles.primaryColor,{fontSize:12}]}>Inserir dados completo</Text>
                     </View>
 
-                    <TouchableOpacity style={styles.submitButton} onPress={() => formRef.current.submitForm()}>
-                        <Text style={styles.submitButtonText}>Cadastrar Cliente</Text>
+                    <TouchableOpacity style={[styles.submitButton, GlobalStyles.backgroundPrimary, GlobalStyles.button]} onPress={() => formRef.current.submitForm()}>
+                        <Text style={[styles.submitButtonText, GlobalStyles.whiteColor]}>Cadastrar Cliente</Text>
                     </TouchableOpacity>
                 </Form>
             </View>
-
-            
+      
         </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -61,21 +51,15 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'stretch',
     padding: 30,
-    backgroundColor: '#fff',
   },
 
   submitButton: {
-    backgroundColor: '#075598',
     borderWidth: 0,
-    borderRadius: 5,
-    paddingVertical: 17,  
     paddingHorizontal: 85,
-    alignItems: 'center'
   },
 
   submitButtonText: {
     fontWeight: 'bold',
-    color: '#fff',
     fontSize: 15,
   },
 });

@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Form } from '@unform/mobile';
 import { StyleSheet, Text, KeyboardAvoidingView, Platform, View, TouchableOpacity, ScrollView} from 'react-native';
 import Input from '../../components/Input';
+import {GlobalStyles} from '../../../style/globalStyle'
 
 export default () => {
         const formRef = useRef(null);
@@ -13,7 +14,7 @@ export default () => {
         }
 
   return (
-    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null} style={styles.container}>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null} style={[styles.container, GlobalStyles.backgroundWhite]}>
         <ScrollView>
             <View>
                 <Form ref={formRef} onSubmit={handleSubmit}>
@@ -29,8 +30,8 @@ export default () => {
                     <Input name="preco" label="Preço" require />
                     
                     <View style={{paddingTop:68}}>
-                        <TouchableOpacity style={styles.submitButton} onPress={() => formRef.current.submitForm()}>
-                            <Text style={styles.submitButtonText}>Cadastrar Produto</Text>
+                        <TouchableOpacity style={[styles.submitButton, GlobalStyles.backgroundPrimary, GlobalStyles.button]} onPress={() => formRef.current.submitForm()}>
+                            <Text style={[styles.submitButtonText, GlobalStyles.whiteColor]}>Cadastrar Produto</Text>
                         </TouchableOpacity>
                     </View>
                 </Form>
@@ -47,22 +48,16 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'stretch',
       padding: 30,
-      backgroundColor: '#fff',
     },
   
     submitButton: {
-      backgroundColor: '#075598',
       borderWidth: 0,
-      borderRadius: 5,
       paddingVertical: 17,  
       paddingHorizontal: 85,
-      alignItems: 'center'
     },
   
     submitButtonText: {
       fontWeight: 'bold',
-      color: '#fff',
       fontSize: 15,
-      
     },
   });

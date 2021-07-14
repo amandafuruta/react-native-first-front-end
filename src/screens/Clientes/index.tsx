@@ -1,7 +1,6 @@
 import React from "react";
-import { Container, Section } from "./style";
 import { View, Text, SectionList, TouchableOpacity , Pressable} from "react-native";
-import { Feather } from '@expo/vector-icons';
+import {GlobalStyles} from "../../../style/globalStyle"
 
   const fakeData = [
     {
@@ -175,7 +174,6 @@ import { Feather } from '@expo/vector-icons';
     },
   ];
 
-
   const sections: {title:string, data: any[]}[] = [];
 
   fakeData.map((item)=>{
@@ -194,14 +192,7 @@ export default ({ navigation , route}) => {
   const valor  = route.params
   return (
     <>
-      {/* <View style={{alignSelf: "stretch", backgroundColor:'#F1F1F1', flexDirection:'row', height:80, alignItems: 'center', paddingRight:40, paddingLeft:140, justifyContent: 'space-between'}}>
-                  <Text style={{fontSize:18, fontWeight:'700' , color:'#075598'}}>Clientes</Text>
-                  <Pressable onPress={()=>{navigation.openDrawer()}}>
-                      <Feather name="menu" size={24} color="#075598" style={{marginLeft:50}}/>
-                  </Pressable>
-                  
-              </View> */}
-      <View style={{backgroundColor:'#fff'}}>
+      <View style={GlobalStyles.backgroundWhite}>
 
       <SectionList
         sections={sections.sort((itemA, itemB)=>{
@@ -217,16 +208,14 @@ export default ({ navigation , route}) => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={{ paddingLeft: 50}}
-            // disabled={valor==true? false: true }
-            onPress={valor==true?() => navigation.navigate("Detalhes", { item }) : ()=>navigation.navigate("Nova Venda", {nome:item.nome})} 
-            
+            onPress={valor==true?() => navigation.navigate("Detalhes", { item }) : ()=>navigation.navigate("Nova Venda", {nome:item.nome})}
           >
             <Text style={{ paddingVertical: 10 }}>{item.nome}</Text>
           </TouchableOpacity>
         )}
         renderSectionHeader={({ section }) => (
-          <View style={{ backgroundColor: "#f2f2f2", paddingVertical: 10 }}>
-            <Text style={{ fontSize: 18, color: "#075598", paddingLeft: 30 }}>
+          <View style={[GlobalStyles.backgroundGrey,{paddingVertical: 10 }]}>
+            <Text style={[GlobalStyles.primaryColor, { fontSize: 18, paddingLeft: 30 }]}>
               {section.title}
             </Text>
           </View>

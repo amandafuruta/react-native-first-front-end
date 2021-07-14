@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Text, View, FlatList, StyleSheet, TouchableOpacity, Modal} from 'react-native';
-import { set } from 'react-native-reanimated';
+import { GlobalStyles } from '../../style/globalStyle';
 
 const movimentacoes = [
   {
@@ -77,18 +77,9 @@ const movimentacoes = [
   },
 ];
 
-interface Dados{
-  data: string;
-  hora: string;
-  descricao: string;
-  valor: string;
-  codigo: string;
-  pagamento: string;
-}
-
 export default function () {
   const [abrirModal, setAbrirModal] = useState(false)
-  const [dados, setDados] = useState<Dados>()
+
   const [data, setData] = useState('')
   const [hora, setHora] = useState('')
   const [cliente, setCliente] = useState('')
@@ -118,18 +109,18 @@ export default function () {
             >
             <View  style={estilo.divView}>
               <View style={{flexDirection:'row', width: 230}}>
-                <Text style={estilo.text}>
+                <Text style={[estilo.text, GlobalStyles.darkGreyColor]}>
                   {item.data} : {item.hora}
                 </Text>
 
-                <Text style={estilo.text}>
+                <Text style={[estilo.text, GlobalStyles.darkGreyColor]}>
                   {item.descricao}
                 </Text>
               </View>
 
               <View>
-                < Text style={estilo.textValor}>
-                  <Text style={estilo.textTransparent}>R$: </Text>{item.valor}
+                < Text style={[estilo.textValor, GlobalStyles.primaryColor]}>
+                  <Text style={[estilo.textTransparent, GlobalStyles.lightGreyColor]}>R$: </Text>{item.valor}
                 </Text>
               </View>
             </View>
@@ -149,28 +140,28 @@ export default function () {
               <View style={{flexDirection:'row',  paddingRight:20}}>
 
                 <View style={[estilo.listDiv, { alignItems:'flex-end', width:150,marginRight:20}]}>
-                  <Text style={[estilo.listTxt, estilo.listTitle]}>Cód.venda:</Text>
-                  <Text style={[estilo.listTxt, estilo.listTitle]}>Data da transação:</Text>
-                  <Text style={[estilo.listTxt, estilo.listTitle]}>Cliente:</Text>
-                  <Text style={[estilo.listTxt, estilo.listTitle]}>Valor: </Text>
-                  <Text style={[estilo.listTxt, estilo.listTitle]}>Forma de pagamento:</Text>
+                  <Text style={[estilo.listTxt, estilo.listTitle, GlobalStyles.darkGreyColor]}>Cód.venda:</Text>
+                  <Text style={[estilo.listTxt, estilo.listTitle, GlobalStyles.darkGreyColor]}>Data da transação:</Text>
+                  <Text style={[estilo.listTxt, estilo.listTitle, GlobalStyles.darkGreyColor]}>Cliente:</Text>
+                  <Text style={[estilo.listTxt, estilo.listTitle, GlobalStyles.darkGreyColor]}>Valor: </Text>
+                  <Text style={[estilo.listTxt, estilo.listTitle, GlobalStyles.darkGreyColor]}>Forma de pagamento:</Text>
                 </View>
 
                 <View style={estilo.listDiv}> 
-                  <Text style={{fontSize:18, fontWeight:'700', color:'#075598', paddingVertical: 8}}>{codigo}</Text>
-                  <Text style={estilo.listTxt}>{data} às {hora}</Text>
-                  <Text style={estilo.listTxt}>{cliente}</Text>
+                  <Text style={[GlobalStyles.primaryColor, {fontSize:18, fontWeight:'700', paddingVertical: 8}]}>{codigo}</Text>
+                  <Text style={[estilo.listTxt, GlobalStyles.darkGreyColor]}>{data} às {hora}</Text>
+                  <Text style={[estilo.listTxt, GlobalStyles.darkGreyColor]}>{cliente}</Text>
                   <View style={{flexDirection:'row'}}>
-                    <Text style={{fontSize:14, color:'#AAAAAA', paddingVertical:10, marginRight:5}} >R$</Text>
-                    <Text style={{fontSize:14, color:'#075598', paddingVertical:10}}>{valor}</Text>
+                    <Text style={[GlobalStyles.lightGreyColor, {fontSize:14,  paddingVertical:10, marginRight:5}]} >R$</Text>
+                    <Text style={[GlobalStyles.primaryColor, {fontSize:14, paddingVertical:10}]}>{valor}</Text>
                   </View>
-                  <Text style={estilo.listTxt}>{pagamento}</Text>
+                  <Text style={[estilo.listTxt, GlobalStyles.darkGreyColor]}>{pagamento}</Text>
                 </View>
 
               </View>
 
-              <TouchableOpacity style={[estilo.btn]} onPress={()=>{setAbrirModal(false)}}>
-                <Text style={estilo.btnTxt}>Voltar</Text>
+              <TouchableOpacity style={[estilo.btn, GlobalStyles.backgroundPrimary, GlobalStyles.button]} onPress={()=>{setAbrirModal(false)}}>
+                <Text style={[estilo.btnTxt, GlobalStyles.whiteColor]}>Voltar</Text>
               </TouchableOpacity>
                     
             </View>
@@ -194,28 +185,20 @@ const estilo = StyleSheet.create({
   },
 
   text: {
-    color:'#666666',
     fontSize: 14,
     marginRight: 20,
   },
 
   textTransparent: {
     fontSize: 14,
-    color: '#AAAAAA',
   },
 
   textValor:{
     fontSize: 14,
-    color: '#075598',
     fontWeight:'600',
   },
 
   btn:{
-    backgroundColor: '#075598', 
-    height: 50, 
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',  
     width: 200,
     marginTop:50
   },
@@ -223,7 +206,6 @@ const estilo = StyleSheet.create({
   btnTxt:{
     fontSize: 12,
     fontWeight: '700',
-    color: '#fff',
     textTransform:'uppercase'
   },
 
@@ -233,7 +215,6 @@ const estilo = StyleSheet.create({
 
   listTxt:{
     fontSize: 14,
-    color: '#666666',
     paddingVertical:10,
   },
 

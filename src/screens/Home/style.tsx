@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styled from 'styled-components/native'
 
 export const Container = styled.SafeAreaView`
@@ -10,21 +10,16 @@ export const Scroller = styled.ScrollView`
 ` 
 
 export const TopDiv = styled.View`
-    background-color: #075598;
     height: 150px;
     align-items: center;
-    padding-top: 30px;
-    
+    padding-top: 30px; 
 ` 
 
 TopDiv.Txt = styled.Text`
     font-size: 27px;
-    color: #fff;
-    font-weight: bold;
-   
+    font-weight: bold; 
 `
 export const DivMiddle = styled.View`
-    background-color: #F1F1F1;
     height: 155px;
     border-top-left-radius: 36px ;
     border-top-right-radius: 36px ;
@@ -55,14 +50,8 @@ DivMiddle.Text.Value.Cifrao = styled.Text`
     font-size: 14px;
     margin-right: 5px;
 `
-// DivMiddle.Text.Value.Valor = styled.Text`
-//     color: #075598;
-//     font-size:20px;
-//     font-weight: 700;
-// `
 
 export const DivBottom = styled.View`
-    background-color: #fff;
     border-top-left-radius: 36px ;
     border-top-right-radius: 36px ;
     flex: 1;
@@ -79,8 +68,7 @@ DivBottom.Top.Div = styled.View`
     flex-direction: column;
     justify-content: center;
 `
-DivBottom.Top.Div.Title = styled.Text`
-    color: #075598;
+DivBottom.Top.Div.Title = styled.Text`   
     font-size: 17px;
     font-weight: 700;
     margin-bottom: 5px;
@@ -98,7 +86,6 @@ DivBottom.Buttons = styled.View`
 `
 
 DivBottom.Buttons.Touch = styled.TouchableOpacity`
-    background-color: #F1F1F1;
     border-radius: 20px;
     width:147px;
     height: 121px;
@@ -106,16 +93,15 @@ DivBottom.Buttons.Touch = styled.TouchableOpacity`
     padding-top: 33px;
 `
 DivBottom.Buttons.Touch.Text = styled.Text`
-    color: #075598;
     font-size:15px;
 `
 export const DivMovimentacao = styled.View`
-    background-color: #fff;
+    padding-top: 20px;
 `
 DivMovimentacao.Title = styled.Text`
     margin-left: 36px;
     margin-bottom: 20px;
-    color: #075598;
     font-size:20px;
     font-weight:bold;
+    
 `

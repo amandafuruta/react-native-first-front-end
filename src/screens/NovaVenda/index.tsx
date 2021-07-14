@@ -4,6 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, Pressable } from 'react-native
 import { Octicons } from '@expo/vector-icons'; 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Feather } from '@expo/vector-icons';
+import {GlobalStyles} from '../../../style/globalStyle'
 
 export default ({navigation, route}) => {
     const nome = route.params?.nome
@@ -23,48 +24,47 @@ export default ({navigation, route}) => {
     return(
         <>
             <View style={{alignSelf: "stretch", backgroundColor:'#F1F1F1', flexDirection:'row', height:80, alignItems: 'center', paddingRight:40, paddingLeft:120, justifyContent: 'space-between'}}>
-                <Text style={{fontSize:18, fontWeight:'700' , color:'#075598'}}>Nova Venda</Text>
+                <Text style={[GlobalStyles.primaryColor,{fontSize:18, fontWeight:'700'}]}>Nova Venda</Text>
                 <Pressable onPress={()=>{navigation.openDrawer()}}>
-                    <Feather name="menu" size={24} color="#075598" style={{marginLeft:50}}/>
+                    <Feather name="menu" size={24} style={[GlobalStyles.primaryColor, {marginLeft:50}]}/>
                 </Pressable>
             </View>
 
-            <Container>        
+            <Container style={GlobalStyles.backgroundWhite}>        
                 <MainDiv>            
 
-                    <Text style={{fontSize:15, color:'#666666', marginLeft: 10, marginBottom:10}}>Cliente:</Text>
+                    <Text style={[GlobalStyles.darkGreyColor, {fontSize:15, marginLeft: 10, marginBottom:10}]}>Cliente:</Text>
                     
                     <View style={{flexDirection:'row'}}>
                         <TextInput
                             value={route.params?.nome}
-                            style={{backgroundColor:'#f1f1f1', height:50, width:255, borderRadius:3, marginBottom:25, paddingLeft:10}}
+                            style={ [GlobalStyles.backgroundGrey,{height:50, width:255, borderRadius:3, marginBottom:25, paddingLeft:10}]}
                         />
 
                         <TouchableOpacity 
                             onPress={()=>navigation.navigate('Clientes', false)}
-                            style={{backgroundColor: '#f1f1f1', justifyContent: 'center', paddingRight:17,  marginBottom:25, height:50}}>
-                            <Octicons name="search" size={24} color="#353F92" /> 
+                            style={[GlobalStyles.backgroundGrey,{justifyContent: 'center', paddingRight:17,  marginBottom:25, height:50}]}>
+                            <Octicons name="search" size={24} style={GlobalStyles.primaryColor} /> 
                         </TouchableOpacity>
                     </View>
                 
                     <View >
                         <Pressable
                             onPress={()=>route.params?.nome == null? '': navigation.navigate('Nova Venda Produtos', nome)}
-
-                        style={{backgroundColor:'#075598', width:'100%', height:50, borderRadius: 5, alignItems: 'center', justifyContent: 'center'}}
+                            style={[GlobalStyles.backgroundPrimary,GlobalStyles.button]}
                         >
-                            <Text style={{color:'#fff', fontSize:17, textTransform:'capitalize', }}>Avançar</Text>
+                            <Text style={[GlobalStyles.whiteColor, { fontSize:17, textTransform:'capitalize'}]}>Avançar</Text>
                         </Pressable>
                     </View>     
 
                     <MainDiv.ViewText>
-                        <MainDiv.Text>Novo cliente?</MainDiv.Text>
-                        <MainDiv.Text>Cadastre ele agora mesmo!</MainDiv.Text>
+                        <MainDiv.Text style={GlobalStyles.primaryColor}>Novo cliente?</MainDiv.Text>
+                        <MainDiv.Text style={GlobalStyles.primaryColor}>Cadastre ele agora mesmo!</MainDiv.Text>
                     </MainDiv.ViewText>
     
                     <MainDiv.ButtonView >
                         <MainDiv.ButtonView.Button onPress={()=>navigation.navigate('Novos Clientes')}>
-                            <MainDiv.Text style={{fontWeight:'bold'}}>+ Novos Clientes</MainDiv.Text>
+                            <MainDiv.Text style={[GlobalStyles.primaryColor, {fontWeight:'bold'}]}>+ Novos Clientes</MainDiv.Text>
                         </MainDiv.ButtonView.Button>  
                     </MainDiv.ButtonView >
 
