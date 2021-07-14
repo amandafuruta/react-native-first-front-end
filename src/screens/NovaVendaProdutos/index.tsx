@@ -1,13 +1,11 @@
-import React, {useState} from 'react'
-import { Container , Header, TopButtons } from './style'
-import { View, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import React, {useState, useEffect} from 'react'
+import { Container, TopButtons } from './style'
+import { View,  StyleSheet, TouchableOpacity, Text } from 'react-native'
 import ListaProdutos from '../../components/ListaProdutos'
-import FabButton from '../../components/FabButton'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-export default ({navigation}, props) => {
-    
-    
-
+export default ({navigation, route} ) => {
+    const nome = route.params
     const [btn1ligado, setBtn1Ligado] = useState(true)
     const [btn2ligado, setBtn2Ligado] = useState(false)
     const [btn3ligado, setBtn3Ligado] = useState(false)
@@ -29,6 +27,23 @@ export default ({navigation}, props) => {
         }
 
     }
+
+    const [carrinho, setCarrinho] = useState(false)
+
+    
+    const validar = () => {
+         AsyncStorage.getItem('carrinho').then((response)=>{
+            if(response=='[]'){
+               setCarrinho(false)
+            }else{
+                setCarrinho(true)
+            }
+            // console.log(JSON.stringify(response)==="[]")
+            // console.log(response=='[]')
+        })
+       
+    }
+
 
     return(
         <Container>
@@ -53,8 +68,9 @@ export default ({navigation}, props) => {
                     <ListaProdutos identificador='nova-venda'/>
 
                 </View>
-             
-                <TouchableOpacity style={styles.btn}  onPress={() => navigation.navigate('Revisão')}>
+
+                
+                <TouchableOpacity style={styles.btn} onPress={()=>{validar(), carrinho==true? navigation.navigate('Revisão', nome): console.log('carrinho vazio')}}>
                     <Text style={styles.txt}>Avançar</Text>
                 </TouchableOpacity>
                            

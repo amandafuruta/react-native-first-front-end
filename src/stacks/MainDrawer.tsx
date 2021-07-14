@@ -21,6 +21,16 @@ const DrawerNavigator = () => {
       drawerContentOptions={{
         activeTintColor: '#075598'
       }}
+      // drawerPosition='right'
+      // screenOptions={{
+      //   headerShown:true,
+      //   headerStyle:{
+      //     backgroundColor: 'rgba(52, 52, 52, 0.0)'
+      //   },
+      //   headerTitleStyle:{
+      //     display:'none'
+      //   }
+      // }}
      >
         <Drawer.Screen 
           name='Home' 
@@ -30,13 +40,13 @@ const DrawerNavigator = () => {
           }}} 
         />
           
-        <Drawer.Screen 
+        {/* <Drawer.Screen 
           name='Minhas Vendas' 
           component={MinhaVenda}
           options={{drawerIcon: () => {
             return <AntDesign  name="areachart" size={24} color='#075598' />;
           }}}
-        />
+        /> */}
 
         <Drawer.Screen 
           name='Minha Conta' 

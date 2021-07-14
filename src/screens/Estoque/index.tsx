@@ -1,12 +1,10 @@
 import React, {useState} from 'react'
 import { Container , Header, TopButtons } from './style'
-import { View, ScrollView, StyleSheet, TouchableOpacity, Text } from 'react-native'
+import { View, ScrollView, StyleSheet, TouchableOpacity, Text, Pressable } from 'react-native'
 import ListaProdutos from '../../components/ListaProdutos'
-import FabButton from '../../components/FabButton'
+import { Feather } from '@expo/vector-icons';
 
 export default ({navigation}) => {
-    
-    
 
     const [btn1ligado, setBtn1Ligado] = useState(true)
     const [btn2ligado, setBtn2Ligado] = useState(false)
@@ -31,12 +29,13 @@ export default ({navigation}) => {
     }
 
     return(
-        <Container>
-        
-
-                <Header>  
-                    <Header.Text>Produtos</Header.Text>
-                </Header>
+            <Container>
+                <View style={{alignSelf: "stretch", backgroundColor:'#F1F1F1', flexDirection:'row', height:80, alignItems: 'center', paddingRight:40, paddingLeft:140, justifyContent: 'space-between'}}>
+                    <Text style={{fontSize:18, fontWeight:'700' , color:'#075598'}}>Produtos</Text>
+                    <Pressable onPress={()=>{navigation.openDrawer()}}>
+                        <Feather name="menu" size={24} color="#075598" style={{marginLeft:50}}/>
+                    </Pressable>
+                </View>
 
                 <View style={{flexDirection:'row', paddingTop:37, paddingBottom:37, alignItems: 'center', justifyContent: 'center'}}>
                     <TopButtons onPress={()=> {setBtn1Ligado(true) ; clicked('btn1' )}} style={{backgroundColor: btn1ligado ? '#075598' : '#F2f3fA',paddingLeft:19, paddingRight:19, borderTopLeftRadius: 5, borderBottomLeftRadius:5}} >

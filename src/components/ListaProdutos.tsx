@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {Text, View, FlatList, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const produtos = [
   {
@@ -7,7 +8,7 @@ const produtos = [
     foto: require('../../assets/produto1.jpg'),
     descricao: 'Apresuntado Sadia',
     preco: '23,90',
-    unidade: '10',
+    unidade: 10,
   
   },
   {
@@ -15,7 +16,7 @@ const produtos = [
     foto: require('../../assets/produto2.jpg'),
     descricao: 'Queijo Mussarela',
     preco: '23,90',
-    unidade: '3',
+    unidade: 3,
   
   },
   {
@@ -23,7 +24,7 @@ const produtos = [
     foto: require('../../assets/produto3.jpg'),
     descricao: 'Mortadela Seara',
     preco: '23,90',
-    unidade: '5',
+    unidade: 5,
   
   },
   {
@@ -31,7 +32,7 @@ const produtos = [
     foto: require('../../assets/produto1.jpg'),
     descricao: 'Apresuntado Sadia',
     preco: '23,90',
-    unidade: '0',
+    unidade: 1,
   
   },
   {
@@ -39,7 +40,7 @@ const produtos = [
     foto: require('../../assets/produto1.jpg'),
     descricao: 'Apresuntado Sadia',
     preco: '23,90',
-    unidade: '10',
+    unidade: 10,
   
   },
   {
@@ -47,7 +48,7 @@ const produtos = [
     foto: require('../../assets/produto2.jpg'),
     descricao: 'Queijo Mussarela',
     preco: '23,90',
-    unidade: '3',
+    unidade: 3,
   
   },
   {
@@ -55,7 +56,7 @@ const produtos = [
     foto: require('../../assets/produto3.jpg'),
     descricao: 'Mortadela Seara',
     preco: '23,90',
-    unidade: '5',
+    unidade: 5,
   
   },
   {
@@ -63,7 +64,7 @@ const produtos = [
     foto: require('../../assets/produto1.jpg'),
     descricao: 'Apresuntado Sadia',
     preco: '23,90',
-    unidade: '0',
+    unidade: 1,
   
   },
 ];
@@ -76,10 +77,10 @@ interface ICart{
 export default function (props:any) {
   const ID = props.identificador
   
-
   const [carrinho, setCarrinho] = useState<ICart[]>([])
 
   const removerProdutosCarrinho = (id:number) => {
+    
     const product = carrinho.find((elemento)=>{
       return elemento.produtoID === id
     })
@@ -93,30 +94,46 @@ export default function (props:any) {
           return elemento.produtoID != id
           
         }))
+        
       }else{
         setCarrinho([...carrinho])
+        
       }
     }
   }
 
-  const adicionarProdutosCarrinho = (id:number) => {
+  const adicionarProdutosCarrinho = (id:number, qntdd:number) => {
+    var sinal
     const product = carrinho.find((elemento)=>{
-      return elemento.produtoID === id
+      if(elemento.produtoID === id){
+        if(elemento.quantidade === qntdd){
+          console.log('entrou')
+          sinal = false
+        }
+        console.log('não entrou')
+        return true
+      }
+      // return elemento.produtoID === id
     })
 
-    if (product){
+    if (product && product.quantidade<qntdd ){
       product.quantidade++
       setCarrinho([...carrinho])
+      
+    }else if(sinal==false){
+      return
     }else{
       setCarrinho((oldCart)=> [...oldCart, {produtoID:id, quantidade:1}])
+      
     }
   }
   
   useEffect(()=>{
-    console.log(carrinho)
-  },[carrinho])
+    ArmazenarLocalstorage('carrinho', JSON.stringify(carrinho))
+  })
 
   const getProductQuantity = useCallback((id)=>{
+    
     const product = carrinho.find((elemento)=>{
       return elemento.produtoID === id
     })
@@ -128,7 +145,9 @@ export default function (props:any) {
     }
   },[carrinho])
  
-  
+  const ArmazenarLocalstorage= (chave, valor) => {
+    AsyncStorage.setItem(chave,valor)
+  }
 
   return (
     <View>
@@ -165,15 +184,15 @@ export default function (props:any) {
 
                 <View style={ {display: ID==null? 'none': 'flex', flexDirection:'row'}}>
 
-                    <TouchableOpacity style={[estilo.btnplus, {marginRight:10}]} onPress={()=> removerProdutosCarrinho(item.id) }>
-                      <Text style={estilo.txtplus}>-</Text>
-                    </TouchableOpacity> 
+                  <TouchableOpacity style={[estilo.btnplus, {marginRight:10}]} onPress={()=> removerProdutosCarrinho(item.id) }>
+                    <Text style={estilo.txtplus}>-</Text>
+                  </TouchableOpacity> 
 
-                    <Text style={estilo.textUnid}> {getProductQuantity(item.id)} </Text>
+                  <Text style={estilo.textUnid}> {getProductQuantity(item.id)} </Text>
 
-                    <TouchableOpacity style={[estilo.btnplus, {marginLeft:10}]} onPress={()=> adicionarProdutosCarrinho(item.id)}>
-                      <Text style={estilo.txtplus}>+</Text>
-                    </TouchableOpacity>
+                  <TouchableOpacity style={[estilo.btnplus, {marginLeft:10}]} onPress={()=> adicionarProdutosCarrinho(item.id, item.unidade)}>
+                    <Text style={estilo.txtplus}>+</Text>
+                  </TouchableOpacity>
 
                 </View>
               </View>

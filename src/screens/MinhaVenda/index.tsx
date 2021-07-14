@@ -1,11 +1,13 @@
 import React from 'react';
 import { Container } from './style';
-import { Text } from 'react-native';
+import { Text, FlatList } from 'react-native';
+import ListaPlana from '../../components/HistoricoVendas'
+
 
 export default () => {
     return(
         <Container>
-            <Text>Minha Venda</Text>
+            <ListaPlana /> 
         </Container>
     )
 }

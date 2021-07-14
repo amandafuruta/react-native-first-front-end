@@ -11,9 +11,9 @@ export const Scroller = styled.ScrollView`
 
 export const TopDiv = styled.View`
     background-color: #075598;
-    height: 173px;
+    height: 150px;
     align-items: center;
-    justify-content: center;
+    padding-top: 30px;
     
 ` 
 
@@ -21,13 +21,14 @@ TopDiv.Txt = styled.Text`
     font-size: 27px;
     color: #fff;
     font-weight: bold;
+   
 `
 export const DivMiddle = styled.View`
     background-color: #F1F1F1;
-    height: 154px;
+    height: 155px;
     border-top-left-radius: 36px ;
     border-top-right-radius: 36px ;
-    margin-top: -34px;
+    margin-top: -35px;
 `
 
 DivMiddle.Box=styled.View`

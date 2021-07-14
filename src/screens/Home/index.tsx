@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import { Container, Scroller, TopDiv, DivMiddle, DivBottom, DivMovimentacao } from './style';
-import { Text, Image, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { Text, Image, StyleSheet, TouchableOpacity, TextInput, Pressable, View } from 'react-native';
 import ListaPlana from '../../components/HistoricoVendas'
 import {useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'react-native'
-
+import { Feather } from '@expo/vector-icons'; 
 
 
 export default ({navigation}) => { 
@@ -16,8 +16,16 @@ export default ({navigation}) => {
             <Scroller  >
                 <StatusBar hidden={true}/>
                 
-                <TopDiv>
-                    <TopDiv.Txt>App Lets</TopDiv.Txt>
+                <TopDiv >
+                    <View style={{alignSelf: "stretch", alignItems:'flex-end', paddingRight:20}}>
+                        <Pressable onPress={()=>{navigation.openDrawer()}}>
+                            <Feather name="menu" size={24} color="white" style={{marginLeft:50}}/>
+                        </Pressable>
+                    </View>
+
+                    <View>
+                        <TopDiv.Txt>App Lets</TopDiv.Txt>
+                    </View>
                 </TopDiv>
 
                 <DivMiddle>
@@ -77,9 +85,9 @@ export default ({navigation}) => {
                             <DivBottom.Buttons.Touch.Text>Performance</DivBottom.Buttons.Touch.Text>
                         </DivBottom.Buttons.Touch> 
 
-                        <DivBottom.Buttons.Touch /*onPress={()=>}*/ style={{marginLeft:10}}>
+                        <DivBottom.Buttons.Touch onPress={()=>navigation.navigate('Minha Venda')} style={{marginLeft:10}}>
                             <Image source={require("../../../assets/newsale.jpg")} style={{width:30, height:30, marginBottom:8}}/>
-                            <DivBottom.Buttons.Touch.Text>Metas</DivBottom.Buttons.Touch.Text>
+                            <DivBottom.Buttons.Touch.Text>Minhas vendas</DivBottom.Buttons.Touch.Text>
                         </DivBottom.Buttons.Touch>   
                     </DivBottom.Buttons>  
 
@@ -87,7 +95,7 @@ export default ({navigation}) => {
             
                 <DivMovimentacao>
                     <DivMovimentacao.Title>Últimas movimentações</DivMovimentacao.Title>
-                    <ListaPlana/>    
+                    <ListaPlana />    
                 </DivMovimentacao>
             </Scroller> 
         </Container>
